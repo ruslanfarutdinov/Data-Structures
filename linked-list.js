@@ -4,12 +4,12 @@ class LinkedList {
   }
 
   addToTail(value) {
-    let node = {
-      value: value,
+    const node = {
+      value,
       next: null,
     };
 
-    if (this.head === this.tail === null) {
+    if (this.head === null) {
       this.head = this.tail = node;
     } else {
       this.tail.next = node;
