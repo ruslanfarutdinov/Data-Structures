@@ -7,7 +7,7 @@ class LinkedList {
     let node = {
       value: value,
       next: null,
-    }
+    };
 
     if (this.head === this.tail === null) {
       this.head = this.tail = node;
@@ -15,5 +15,15 @@ class LinkedList {
       this.tail.next = node;
       this.tail = node;
     }
+  }
+
+  removeHead() {
+    const removedValue = this.head.value;
+    this.head = this.head.next;
+    return removedValue;
+  }
+
+  contains(value) {
+
   }
 }
