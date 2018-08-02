@@ -33,4 +33,18 @@ class Trie {
       }
     }
   }
+
+  find(str) {
+    let prevNode = this.rootNode;
+    for (let i = 0; i < str.length; i += 1) {
+      const char = str[i];
+      if (!prevNode.children[char] || i === str.length - 1 && !prevNode.children[char].completesStr) {
+        return false;
+      }
+      if (i === str.length - 1 && prevNode.children[char].completesStr) {
+        return true;
+      }
+      prevNode = prevNode.children[char];
+    }
+  }
 }
