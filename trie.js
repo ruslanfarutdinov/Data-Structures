@@ -47,4 +47,29 @@ class Trie {
       prevNode = prevNode.children[char];
     }
   }
+
+  remove(str) {
+    if (this.find(str)) {
+      const nodes = [];
+      let prevNode = this.rootNode;
+      for (let i = 0; i < str.length; i += 1) {
+        const char = str[i];
+        nodes.push(prevNode.children[char]);
+        prevNode = prevNode.children[char];
+      }
+
+      for (let i = str.length - 1; i >= 0; i -= 1) {
+        const char = str[i + 1];
+        const length = Object.keys(nodes[i].children).length;
+        if (i === str.length - 1 && length > 0) {
+          nodes[i].completesStr = false;
+          return;
+        }
+        if (length > 1) {
+          delete nodes[i].children[char];
+          return;
+        }
+      }
+    }
+  }
 }
