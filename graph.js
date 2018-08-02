@@ -8,4 +8,14 @@ class Graph {
   addNode(value) {
     this.storage.push({ value, edges: [] });
   }
+
+  contains(value) {
+    for (let i = 0; i < this.storage.length; i += 1) {
+      const node = this.storage[i];
+      if (node.value === value) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
