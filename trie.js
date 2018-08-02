@@ -38,7 +38,8 @@ class Trie {
     let prevNode = this.rootNode;
     for (let i = 0; i < str.length; i += 1) {
       const char = str[i];
-      if (!prevNode.children[char] || i === str.length - 1 && !prevNode.children[char].completesStr) {
+      if (!prevNode.children[char]
+          || (i === str.length - 1 && !prevNode.children[char].completesStr)) {
         return false;
       }
       if (i === str.length - 1 && prevNode.children[char].completesStr) {
@@ -73,3 +74,9 @@ class Trie {
     }
   }
 }
+
+// Time complexity
+// insert() - O(n) with n as length of the string. However since most strings are going
+// to be limitted in length, it's considered O(1)
+// find() -  same as above
+// remove() - same as above
