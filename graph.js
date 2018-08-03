@@ -9,23 +9,28 @@ class Graph {
     this.storage.push({ value, edges: [] });
   }
 
-  contains(value) {
+  contains(node) {
     for (let i = 0; i < this.storage.length; i += 1) {
-      const node = this.storage[i];
-      if (node.value === value) {
+      const currNode = this.storage[i];
+      if (currNode.value === node.value) {
         return true;
       }
     }
     return false;
   }
 
-  removeNode(value) {
+  removeNode(node) {
+    let removeNodeI;
     for (let i = 0; i < this.storage.length; i += 1) {
-      const node = this.storage[i];
-      if (node.value === value) {
-        return this.storage.splice(i, 1);
+      const currNode = this.storage[i];
+      if (currNode.value === node.value) {
+        removeNodeI = i;
+      }
+      if (this.hasEdge(node, currNode)) {
+        this.removeEdge(node, currNode);
       }
     }
+    this.storage.splice(removeNodeI, 1);
   }
 
   hasEdge(fromNode, toNode) {
