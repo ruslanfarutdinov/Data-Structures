@@ -80,3 +80,13 @@ class Graph {
     }
   }
 }
+
+// Time complexity analysis
+// addNode() - O(1), because array push is O(1) since array knows where the end is and just inserts a value there
+// Remember: array math = size of each slot in memory (same) * position --> gets you a specific location in memory
+// contains() - O(n), b/c in the worst case the value isn't in the graph
+// removeNode() - O(n^2), b/c for each iteration there are a ton of other iterations, but constant factors are dropped, so it's the same as if it were one for loop
+// hasEdge() - O(n)
+// addEdge() - O(n), b/c contains() is present, if it wasn't it would be O(1) - just a pushing into array operation
+// removeEdge() - O(n)
+// forEachNode() - O(n)
