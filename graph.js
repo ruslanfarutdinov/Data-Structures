@@ -67,4 +67,11 @@ class Graph {
       toNode.splice(toNodeI, 1);
     }
   }
+
+  forEachNode(cb) {
+    for (let i = 0; i < this.storage.length; i += 1) {
+      const node = this.storage[i];
+      cb(node);
+    }
+  }
 }
