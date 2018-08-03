@@ -39,4 +39,11 @@ class Graph {
       return false;
     }
   }
+
+  addEdge(fromNode, toNode) {
+    if (this.contains(fromNode) && this.contains(toNode)) {
+      fromNode.edges.push(toNode);
+      toNode.edges.push(fromNode);
+    }
+  }
 }
