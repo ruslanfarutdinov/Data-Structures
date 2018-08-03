@@ -20,3 +20,6 @@ class Queue {
   }
 }
 
+// Time complexity analysis
+// enqueue() - O(1)
+// dequeue() - O(1)
