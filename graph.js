@@ -46,4 +46,25 @@ class Graph {
       toNode.edges.push(fromNode);
     }
   }
+
+  removeEdge(fromNode, toNode) {
+    if (this.hasEdge(fromNode, toNode)) {
+      let fromNodeI;
+      let toNodeI;
+      for (let i = 0; i < fromNode.edges.length; i += 1) {
+        const node = fromNode.edges[i];
+        if (node.value === toNode) {
+          fromNodeI = i;
+        }
+      }
+      for (let j = 0; j < toNode.edges.length; j += 1) {
+        const node = toNode.edges[j];
+        if (node.value === fromNode) {
+          toNodeI = j;
+        }
+      }
+      fromNode.splice(fromNodeI, 1);
+      toNode.splice(toNodeI, 1);
+    }
+  }
 }
