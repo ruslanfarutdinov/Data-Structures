@@ -11,8 +11,14 @@ class Stack {
   }
 
   pop() {
-    this.position -= 1;
-    this.size -= 1;
-    delete this[this.position];
+    if (this.size > 0) {
+      this.position -= 1;
+      this.size -= 1;
+      delete this[this.position];
+    }
   }
 }
+
+// Time Complexity Analysis
+// push(str) - O(1)
+// pop() - O(1)
