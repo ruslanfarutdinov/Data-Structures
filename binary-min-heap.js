@@ -24,4 +24,31 @@ class MinHeap {
   _getLeftChild(index) { return this.items[this._getLeftChildIndex(index)]; }
   _getRightChild(index) { return this.items[this._getRightChildIndex(index)]; }
   _getParent(index) { return this.items[this._getParentIndex(index)]; }
+
+  peek() {
+    // This method returns, but doesn't extract, the min item in the heap
+    return this.items[0];
+  }
+
+  poll() {
+    if (this.items.length > 0) {
+      const item = this.items[0];
+      items[0] = items[this.items.length - 1];
+      this.heapifyDown();
+      return item;
+    }
+  }
+
+  add(item) {
+    this.items.push(item);
+    this.heapifyUp();
+  }
+
+  heapifyUp() {
+    
+  }
+
+  heapifyDown() {
+
+  }
 }
