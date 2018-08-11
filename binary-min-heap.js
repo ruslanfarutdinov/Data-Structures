@@ -35,9 +35,10 @@ class MinHeap {
   }
 
   poll() {
+    // This method extracts and returns the min item in the heap
     if (this.items.length > 0) {
       const item = this.items[0];
-      items[0] = items[this.items.length - 1];
+      this.items[0] = this.items.pop();
       this.heapifyDown();
       return item;
     }
@@ -50,7 +51,7 @@ class MinHeap {
 
   heapifyUp() {
     let index = this.items.length - 1;
-    while(this.hasParent(index) && this.parent(index) > this.items[index]) {
+    while (this.hasParent(index) && this.parent(index) > this.items[index]) {
       this.swap(this.getParentIndex(index), index);
       index = this.getParentIndex(index);
     }
@@ -58,13 +59,13 @@ class MinHeap {
 
   heapifyDown() {
     let index = 0;
-    while(this.hasLeftChild(index)) {
+    while (this.hasLeftChild(index)) {
       let smallerChildIndex = this.getLeftChildIndex(index);
       if (this.hasRightChild(index) && this.rightChild(index) < this.leftChild(index)) {
         smallerChildIndex = this.getRightChildIndex(index);
       }
 
-      if (this.items[index] < items[smallerChildIndex]) {
+      if (this.items[index] < this.items[smallerChildIndex]) {
         return;
       }
 
