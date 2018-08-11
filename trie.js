@@ -33,6 +33,8 @@ class Trie {
       }
     }
   }
+  // insert() - O(n) with n as length of the string. However since most strings are going
+  // to be limitted in length, it's considered O(1)
 
   find(str) {
     let prevNode = this.rootNode;
@@ -48,6 +50,7 @@ class Trie {
       prevNode = prevNode.children[char];
     }
   }
+  // find() -  same as above
 
   remove(str) {
     if (this.find(str)) {
@@ -74,9 +77,4 @@ class Trie {
     }
   }
 }
-
-// Time complexity
-// insert() - O(n) with n as length of the string. However since most strings are going
-// to be limitted in length, it's considered O(1)
-// find() -  same as above
 // remove() - same as above

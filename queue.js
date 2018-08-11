@@ -10,6 +10,7 @@ class Queue {
     this.enqueuePos += 1;
     this.size += 1;
   }
+  // enqueue() - O(1)
 
   dequeue() {
     if (this.size > 0) {
@@ -19,7 +20,4 @@ class Queue {
     }
   }
 }
-
-// Time complexity analysis
-// enqueue() - O(1)
 // dequeue() - O(1)

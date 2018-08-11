@@ -8,6 +8,8 @@ class Graph {
   addNode(value) {
     this.storage.push({ value, edges: [] });
   }
+  // O(1), because array push is O(1) since array knows where the end is and just inserts a value there
+  // Remember: array math = size of each slot in memory (same) * position --> gets you a specific location in memory
 
   contains(node) {
     for (let i = 0; i < this.storage.length; i += 1) {
@@ -18,6 +20,7 @@ class Graph {
     }
     return false;
   }
+  // contains() - O(n), b/c in the worst case the value isn't in the graph
 
   removeNode(node) {
     let removeNodeI;
@@ -32,6 +35,7 @@ class Graph {
     }
     this.storage.splice(removeNodeI, 1);
   }
+  // removeNode() - O(n^2), b/c for each iteration there are a ton of other iterations, but constant factors are dropped, so it's the same as if it were one for loop
 
   hasEdge(fromNode, toNode) {
     if (this.contains(fromNode)) {
@@ -44,6 +48,7 @@ class Graph {
       return false;
     }
   }
+  // hasEdge() - O(n)
 
   addEdge(fromNode, toNode) {
     if (this.contains(fromNode) && this.contains(toNode)) {
@@ -51,6 +56,7 @@ class Graph {
       toNode.edges.push(fromNode);
     }
   }
+  // addEdge() - O(n), b/c contains() is present, if it wasn't it would be O(1) - just a pushing into array operation
 
   removeEdge(fromNode, toNode) {
     if (this.hasEdge(fromNode, toNode)) {
@@ -72,6 +78,7 @@ class Graph {
       toNode.splice(toNodeI, 1);
     }
   }
+  // removeEdge() - O(n)
 
   forEachNode(cb) {
     for (let i = 0; i < this.storage.length; i += 1) {
@@ -80,13 +87,4 @@ class Graph {
     }
   }
 }
-
-// Time complexity analysis
-// addNode() - O(1), because array push is O(1) since array knows where the end is and just inserts a value there
-// Remember: array math = size of each slot in memory (same) * position --> gets you a specific location in memory
-// contains() - O(n), b/c in the worst case the value isn't in the graph
-// removeNode() - O(n^2), b/c for each iteration there are a ton of other iterations, but constant factors are dropped, so it's the same as if it were one for loop
-// hasEdge() - O(n)
-// addEdge() - O(n), b/c contains() is present, if it wasn't it would be O(1) - just a pushing into array operation
-// removeEdge() - O(n)
 // forEachNode() - O(n)

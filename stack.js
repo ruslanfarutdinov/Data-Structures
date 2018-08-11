@@ -9,6 +9,7 @@ class Stack {
     this.size += 1;
     this.position += 1;
   }
+  // push(str) - O(1)
 
   pop() {
     if (this.size > 0) {
@@ -18,7 +19,4 @@ class Stack {
     }
   }
 }
-
-// Time Complexity Analysis
-// push(str) - O(1)
 // pop() - O(1)

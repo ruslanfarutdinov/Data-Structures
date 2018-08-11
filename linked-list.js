@@ -16,12 +16,14 @@ class LinkedList {
       this.tail = node;
     }
   }
+  // addToTail - O(1)
 
   removeHead() {
     const removedValue = this.head.value;
     this.head = this.head.next;
     return removedValue;
   }
+  // removeHead - O(1)
 
   contains(value) {
     let currentNode = this.head;
@@ -34,8 +36,4 @@ class LinkedList {
     return false;
   }
 }
-
-// Time complexity of the linked list methods?
-// addToTail - O(1)
-// removeHead - O(1)
 // contains - O(n), because have to traverse thru the whole linked list looking for the value
