@@ -7,3 +7,4 @@ Implementation of common data structures in JavaScript
 5. Queue
 6. Stack
 7. Binary Min Heap
+8. Array Lists
