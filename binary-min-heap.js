@@ -46,7 +46,10 @@ class MinHeap {
 
   heapifyUp() {
     let index = this.items.length - 1;
-    while(this._hasParent(index) && this.)
+    while(this._hasParent(index) && this._parent(index) > this.items[index]) {
+      [this.items[this._getParentIndex(index)], this.items[index]] = [this.items[index], this.items[this._getParentIndex(index)]];
+      index = this._getParentIndex(index);
+    }
   }
 
   heapifyDown() {
