@@ -13,17 +13,21 @@ class MinHeap {
     this.items = [];
   }
 
-  _getLeftChildIndex(parentIndex) { return 2 * parentIndex + 1; }
-  _getRightChildIndex(parentIndex) { return 2 * parentIndex + 2; }
-  _getParentIndex(childIndex) { return Math.floor((childIndex - 1) / 2); }
+  getLeftChildIndex(parentIndex) { return 2 * parentIndex + 1; }
+  getRightChildIndex(parentIndex) { return 2 * parentIndex + 2; }
+  getParentIndex(childIndex) { return Math.floor((childIndex - 1) / 2); }
 
-  _hasLeftChild(index) { return this._getLeftChildIndex(index) < this.items.length; }
-  _hasRightChild(index) { return this._getRightChildIndex(index) < this.items.length; }
-  _hasParent(index) { return this._getParentIndex(index) >= 0; }
+  hasLeftChild(index) { return this.getLeftChildIndex(index) < this.items.length; }
+  hasRightChild(index) { return this.getRightChildIndex(index) < this.items.length; }
+  hasParent(index) { return this.getParentIndex(index) >= 0; }
 
-  _leftChild(index) { return this.items[this._getLeftChildIndex(index)]; }
-  _rightChild(index) { return this.items[this._getRightChildIndex(index)]; }
-  _parent(index) { return this.items[this._getParentIndex(index)]; }
+  leftChild(index) { return this.items[this.getLeftChildIndex(index)]; }
+  rightChild(index) { return this.items[this.getRightChildIndex(index)]; }
+  parent(index) { return this.items[this.getParentIndex(index)]; }
+
+  swap(indexOne, indexTwo) {
+    [this.items[indexOne], this.items[indexTwo]] = [this.items[indexTwo], this.items[indexOne]];
+  }
 
   peek() {
     // This method returns, but doesn't extract, the min item in the heap
@@ -46,13 +50,26 @@ class MinHeap {
 
   heapifyUp() {
     let index = this.items.length - 1;
-    while(this._hasParent(index) && this._parent(index) > this.items[index]) {
-      [this.items[this._getParentIndex(index)], this.items[index]] = [this.items[index], this.items[this._getParentIndex(index)]];
-      index = this._getParentIndex(index);
+    while(this.hasParent(index) && this.parent(index) > this.items[index]) {
+      this.swap(this.getParentIndex(index), index);
+      index = this.getParentIndex(index);
     }
   }
 
   heapifyDown() {
+    let index = 0;
+    while(this.hasLeftChild(index)) {
+      let smallerChildIndex = this.getLeftChildIndex(index);
+      if (this.hasRightChild(index) && this.rightChild(index) < this.leftChild(index)) {
+        smallerChildIndex = this.getRightChildIndex(index);
+      }
 
+      if (this.items[index] < items[smallerChildIndex]) {
+        return;
+      }
+
+      this.swap(index, smallerChildIndex);
+      index = smallerChildIndex;
+    }
   }
 }
