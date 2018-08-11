@@ -28,11 +28,15 @@ class MinHeap {
   swap(indexOne, indexTwo) {
     [this.items[indexOne], this.items[indexTwo]] = [this.items[indexTwo], this.items[indexOne]];
   }
+  // O(1) - Swapping two values in an array is a constant time operation, b/c it's simply accessing
+  // a particular position in the array and then reassigning it's value at that position, all of 
+  // which are O(1)
 
   peek() {
     // This method returns, but doesn't extract, the min item in the heap
     return this.items[0];
   }
+  // O(1)
 
   poll() {
     // This method extracts and returns the min item in the heap
@@ -43,11 +47,13 @@ class MinHeap {
       return item;
     }
   }
+  // O(log n) - b/c of heapifyDown, everything else is constant time
 
   add(item) {
     this.items.push(item);
     this.heapifyUp();
   }
+  // O(log n) - b/c of heapifyUp, everything else is constant time
 
   heapifyUp() {
     let index = this.items.length - 1;
@@ -56,6 +62,9 @@ class MinHeap {
       index = this.getParentIndex(index);
     }
   }
+  // O(log n) - b/c the number of operations are equal to the depth of the tree
+  // and the depth of the tree is roughly log n
+
 
   heapifyDown() {
     let index = 0;
@@ -73,4 +82,6 @@ class MinHeap {
       index = smallerChildIndex;
     }
   }
+  // O(log n) - b/c the tree cuts in half every loop
+  // Also, describe the process of deriving log n
 }
