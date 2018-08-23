@@ -47,7 +47,7 @@ function getIndexBelowMaxForKey(str, max) {
 class HashTable {
   constructor() {
     this.limit = 8; // 8 picked arbitrarily
-    this.storage = limitedArray(this.limit);
+    this.storage = LimitedArray(this.limit);
   }
 
   insert(key, value) {
