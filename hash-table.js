@@ -74,10 +74,15 @@ class HashTable {
 
   retrieve(key) {
     const index = getIndexBelowMaxForKey(key, this.limit);
-    
+    const bucket = this.storage.get(index);
+    for (let i = 0; i < bucket.length; i += 1) {
+      if (bucket[i][0] === key) {
+        return bucket[i][1];
+      }
+    }
   }
 
-  remove() {
-
+  remove(key) {
+    
   }
 }
