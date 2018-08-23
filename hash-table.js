@@ -83,6 +83,14 @@ class HashTable {
   }
 
   remove(key) {
-    
+    const index = getIndexBelowMaxForKey(key, this.limit);
+    const bucket = this.storage.get(index);
+    for (let i = 0; i < bucket.length; i += 1) {
+      if (bucket[i][0] === key) {
+        const value = bucket[i][1];
+        bucket.splice(i, 1);
+        return value;
+      }
+    }
   }
 }
