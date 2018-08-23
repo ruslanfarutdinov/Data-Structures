@@ -14,7 +14,7 @@ class ArrayList {
     if (this.size === this.capacity) {
       const biggerArr = new Array(this.capacity * 2);
       for (let i = 0; i < this.size; i += 1) {
-        biggerArr[i] = this.elements[i;]
+        biggerArr[i] = this.elements[i];
       }
       this.elements = biggerArr;
       this.capacity = this.capacity * 2;
@@ -75,5 +75,4 @@ class ArrayList {
     return this.size;
   }
   // O(1)
-
 }
